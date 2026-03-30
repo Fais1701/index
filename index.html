@@ -4,20 +4,16 @@
   <meta charset="UTF-8">
   <title>For You</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <h1>Curated For You</h1>
   <p>Not everything you want… just everything you deserve</p>
   <button onclick="scrollToForm()">Start</button>
 </section>
 
-<!-- WISHLIST -->
 <section class="wishlist">
   <h2>Your World</h2>
   <div class="cards">
@@ -27,44 +23,29 @@
   </div>
 </section>
 
-<!-- FORM SECTION -->
 <section class="form-section" id="formSection">
   <h2>Add Something You Want</h2>
 
   <form action="https://formspree.io/f/xykbwayy" method="POST" class="form-box">
 
-    <!-- Required hidden fields -->
     <input type="hidden" name="_subject" value="New Wish Submission 💌">
     <input type="hidden" name="_redirect" value="false">
 
-    <!-- Inputs -->
-    <input 
-      type="text" 
-      name="wish" 
-      placeholder="What do you secretly want?" 
-      required
-      autocomplete="off"
-    />
+    <input type="text" name="wish" placeholder="What do you secretly want?" required>
 
-    <textarea 
-      name="reason" 
-      placeholder="Why does this matter to you?"
-      rows="4"
-    ></textarea>
+    <textarea name="reason" placeholder="Why does this matter to you?" rows="4"></textarea>
 
-    <!-- Submit -->
     <button type="submit">Submit</button>
 
   </form>
 </section>
 
-<!-- SUCCESS SCREEN -->
-<div id="successScreen">
+<!-- 🔥 FIX: hidden by default -->
+<div id="successScreen" style="display: none;">
   <h1>Wish received ✨</h1>
   <p>I’ll remember this.</p>
 </div>
 
-<!-- JS -->
 <script src="script.js"></script>
 
 </body>
