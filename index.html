@@ -8,12 +8,14 @@
 </head>
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Curated For You</h1>
   <p>Not everything you want… just everything you deserve</p>
   <button onclick="scrollToForm()">Start</button>
 </section>
 
+<!-- WISHLIST -->
 <section class="wishlist">
   <h2>Your World</h2>
   <div class="cards">
@@ -23,6 +25,7 @@
   </div>
 </section>
 
+<!-- FORM -->
 <section class="form-section" id="formSection">
   <h2>Add Something You Want</h2>
 
@@ -32,6 +35,10 @@
     onsubmit="handleSubmit(event)"
     class="form-box"
   >
+
+    <!-- Email subject -->
+    <input type="hidden" name="_subject" value="New Wish Submission 💌">
+
     <input 
       type="text" 
       name="wish" 
@@ -48,6 +55,7 @@
   </form>
 </section>
 
+<!-- SUCCESS SCREEN -->
 <div id="successScreen" class="hidden">
   <h1>Wish received ✨</h1>
   <p>I’ll remember this.</p>
