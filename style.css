@@ -6,15 +6,19 @@
 }
 
 body {
-  background: #0f0f0f;
-  color: #fff;
+  background: #0a0a0a;
+  color: white;
 }
 
 /* HERO */
 .hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000, #1a1a1a);
   text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #1a1a1a, #000);
 }
 
 .hero h1 {
@@ -23,34 +27,43 @@ body {
 }
 
 .hero p {
-  margin-top: 10px;
+  margin: 15px 0;
   color: #aaa;
 }
 
+.hero button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, gold, #d4af37);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(212,175,55,0.4);
+}
+
 /* WISHLIST */
-.wishlist-container {
-  padding: 40px 20px;
-  max-width: 900px;
-  margin: auto;
+.wishlist {
+  padding: 60px 20px;
+  text-align: center;
 }
 
-.wishlist-container h2 {
-  margin-bottom: 20px;
-  font-weight: 500;
-}
-
-.wishlist-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.cards {
+  display: flex;
   gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card {
   background: #1c1c1c;
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 12px;
   transition: 0.3s;
-  position: relative;
 }
 
 .card:hover {
@@ -58,44 +71,73 @@ body {
   background: #222;
 }
 
-.card button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: crimson;
-  border: none;
-  color: white;
-  padding: 5px 8px;
-  cursor: pointer;
-  border-radius: 6px;
+/* FORM */
+.form-section {
+  padding: 60px 20px;
+  text-align: center;
 }
 
-/* ADD BOX */
-.add-box {
-  margin-top: 30px;
+.form-box {
+  max-width: 400px;
+  margin: auto;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
 }
 
-.add-box input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
+input, textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: transparent;
+  color: white;
+  transition: 0.2s;
 }
 
-.add-box button {
-  padding: 10px 20px;
+input:focus, textarea:focus {
+  border-color: gold;
+  outline: none;
+}
+
+button {
+  padding: 12px;
   border: none;
+  border-radius: 8px;
   background: white;
   color: black;
-  border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #666;
+button:hover {
+  background: gold;
+}
+
+/* SUCCESS */
+#successScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
