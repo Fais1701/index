@@ -8,25 +8,50 @@
 </head>
 <body>
 
-<header class="hero">
-  <h1>Curated Just For You</h1>
-  <p>A personal wishlist experience</p>
-</header>
+<section class="hero">
+  <h1>Curated For You</h1>
+  <p>Not everything you want… just everything you deserve</p>
+  <button onclick="scrollToForm()">Start</button>
+</section>
 
-<section class="wishlist-container">
-  <h2>Your Wishlist</h2>
-
-  <div id="wishlist" class="wishlist-grid"></div>
-
-  <div class="add-box">
-    <input id="itemInput" placeholder="Add something you love..." />
-    <button onclick="addItem()">Add</button>
+<section class="wishlist">
+  <h2>Your World</h2>
+  <div class="cards">
+    <div class="card">Late night drives 🌙</div>
+    <div class="card">Your favorite perfume 💫</div>
+    <div class="card">A surprise date ✨</div>
   </div>
 </section>
 
-<footer>
-  <p>Crafted with intent</p>
-</footer>
+<section class="form-section" id="formSection">
+  <h2>Add Something You Want</h2>
+
+  <form 
+    action="https://formspree.io/f/xykbwayy"
+    method="POST"
+    onsubmit="handleSubmit(event)"
+    class="form-box"
+  >
+    <input 
+      type="text" 
+      name="wish" 
+      placeholder="What do you secretly want?" 
+      required
+    />
+
+    <textarea 
+      name="reason" 
+      placeholder="Why does this matter to you?"
+    ></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<div id="successScreen" class="hidden">
+  <h1>Wish received ✨</h1>
+  <p>I’ll remember this.</p>
+</div>
 
 <script src="script.js"></script>
 </body>
