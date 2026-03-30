@@ -26,36 +26,35 @@
 </section>
 
 <!-- FORM -->
-<section class="form-section" id="formSection">
-  <h2>Add Something You Want</h2>
+<form 
+  action="https://formspree.io/f/xykbwayy" 
+  method="POST" 
+  class="form-box"
+>
 
-  <form 
-    action="https://formspree.io/f/xykbwayy"
-    method="POST"
-    onsubmit="handleSubmit(event)"
-    class="form-box"
-  >
+  <!-- Email subject -->
+  <input type="hidden" name="_subject" value="New Wish Submission 💌">
 
-    <input type="hidden" name="_subject" value="New Wish Submission 💌">
+  <!-- Wish input -->
+  <input 
+    type="text" 
+    name="wish" 
+    placeholder="What do you secretly want?" 
+    required
+    autocomplete="off"
+  />
 
-    <input 
-      type="text" 
-      name="wish" 
-      placeholder="What do you secretly want?" 
-      required
-    />
+  <!-- Reason -->
+  <textarea 
+    name="reason" 
+    placeholder="Why does this matter to you?"
+    rows="4"
+  ></textarea>
 
-    <textarea 
-      name="reason" 
-      placeholder="Why does this matter to you?"
-      rows="4"
-    ></textarea>
+  <!-- Submit -->
+  <button type="submit">Submit</button>
 
-    <button type="submit">Submit</button>
-
-  </form>
-</section>
-
+</form>
     <!-- Email subject -->
     <input type="hidden" name="_subject" value="New Wish Submission 💌">
 
