@@ -1,34 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  // SAFE typing effect
-  const text = "I built this for you.";
-  const typingEl = document.getElementById("typingText");
-  let i = 0;
-
-  function type() {
-    if (!typingEl) return; // prevent crash
-
-    if (i < text.length) {
-      typingEl.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type, 40);
-    } else {
-      setTimeout(() => {
-        const intro = document.getElementById("intro");
-        if (intro) intro.style.display = "none";
-      }, 800);
-    }
-  }
-
-  type();
-
-  // FORM + LOGIC
-  const form = document.querySelector("form");
-  const successScreen = document.getElementById("successScreen");
+  const input = document.getElementById("inputBox");
   const cards = document.getElementById("cards");
-  const btn = form.querySelector("button");
+  const feedback = document.getElementById("feedback");
+  const title = document.getElementById("title");
 
-  // Load saved wishes
+  let step = 1;
+  let tempWish = "";
+
+  // Load saved
   const saved = JSON.parse(localStorage.getItem("wishes")) || [];
   saved.forEach(addCard);
 
@@ -39,42 +18,49 @@ document.addEventListener("DOMContentLoaded", () => {
     cards.prepend(div);
   }
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  input.addEventListener("keypress", async (e) => {
+    if (e.key === "Enter" && input.value.trim()) {
 
-    btn.innerText = "Saving...";
-    btn.disabled = true;
+      const value = input.value.trim();
 
-    const data = new FormData(form);
-    const wish = data.get("wish");
+      if (step === 1) {
+        tempWish = value;
 
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" }
-      });
+        title.innerText = "Why does that matter to you?";
+        input.value = "";
+        step = 2;
 
-      if (res.ok) {
-        form.reset();
+      } else {
+        const reason = value;
 
-        const current = JSON.parse(localStorage.getItem("wishes")) || [];
-        current.push(wish);
-        localStorage.setItem("wishes", JSON.stringify(current));
+        // Save locally
+        const stored = JSON.parse(localStorage.getItem("wishes")) || [];
+        stored.push(tempWish);
+        localStorage.setItem("wishes", JSON.stringify(stored));
 
-        addCard(wish);
+        addCard(tempWish);
 
-        successScreen.style.display = "flex";
-        setTimeout(() => successScreen.style.display = "none", 2000);
+        // Send to Formspree
+        fetch("https://formspree.io/f/xykbwayy", {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          body: new FormData(Object.assign(document.createElement("form"), {
+            innerHTML: `
+              <input name="wish" value="${tempWish}">
+              <input name="reason" value="${reason}">
+            `
+          }))
+        });
+
+        // Feedback
+        feedback.style.display = "block";
+        setTimeout(() => feedback.style.display = "none", 1500);
+
+        // Reset loop
+        input.value = "";
+        title.innerText = "Tell me another.";
+        step = 1;
       }
-    } catch {}
-
-    btn.innerText = "Submit";
-    btn.disabled = false;
+    }
   });
 });
-
-// SCROLL
-function scrollToForm() {
-  document.getElementById("formSection").scrollIntoView({ behavior: "smooth" });
-  document.getElementById
