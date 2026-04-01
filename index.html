@@ -8,45 +8,47 @@
 </head>
 <body>
 
-<section class="hero">
-  <h1>Curated For You</h1>
-  <p>Not everything you want… just everything you deserve</p>
-  <button onclick="scrollToForm()">Start</button>
-</section>
+<!-- INTRO SCREEN -->
+<div id="intro">
+  <h1 id="typingText"></h1>
+</div>
 
-<section class="wishlist">
-  <h2>Your World</h2>
-  <div class="cards">
-    <div class="card">Late night drives 🌙</div>
-    <div class="card">Your favorite perfume 💫</div>
-    <div class="card">A surprise date ✨</div>
-  </div>
-</section>
+<!-- MAIN CONTENT -->
+<div id="mainContent" style="display:none;">
 
-<section class="form-section" id="formSection">
-  <h2>Add Something You Want</h2>
+  <section class="hero">
+    <h1>For Arishfa</h1>
+    <p>Not everything you want… just everything you deserve</p>
+    <button id="startBtn" onclick="scrollToForm()">Start</button>
+  </section>
 
-  <form action="https://formspree.io/f/xykbwayy" method="POST" class="form-box">
+  <section class="wishlist">
+    <h2>Your World</h2>
+    <div class="cards" id="cards"></div>
+  </section>
 
-    <input type="hidden" name="_subject" value="New Wish Submission 💌">
-    <input type="hidden" name="_redirect" value="false">
+  <section class="form-section" id="formSection">
+    <h2>Add Something You Want</h2>
 
-    <input type="text" name="wish" placeholder="What do you secretly want?" required>
+    <form action="https://formspree.io/f/xykbwayy" method="POST" class="form-box">
+      <input type="hidden" name="_subject" value="New Wish Submission 💌">
+      <input type="hidden" name="_redirect" value="false">
 
-    <textarea name="reason" placeholder="Why does this matter to you?" rows="4"></textarea>
+      <input type="text" name="wish" placeholder="What do you secretly want?" required>
+      <textarea name="reason" placeholder="Why does this matter to you?" rows="4"></textarea>
 
-    <button type="submit">Submit</button>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
 
-  </form>
-</section>
+</div>
 
-<!-- 🔥 FIX: hidden by default -->
-<div id="successScreen" style="display: none;">
-  <h1>Wish received ✨</h1>
+<!-- SUCCESS -->
+<div id="successScreen" style="display:none;">
+  <h1>Noted.</h1>
   <p>I’ll remember this.</p>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
